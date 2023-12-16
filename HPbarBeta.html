@@ -1,0 +1,403 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset='utf-8'>
+      <meta content='width=device-width,minimum-scale=1' name='viewport'>      
+      <style>
+
+#obsolete {
+	color: red;
+	background-color: black;
+	margin: 1px;
+	text-align: center;
+	
+}
+body {
+background-color: #464262;
+margin: 0em;
+margin-bottom: 1em;
+} 
+h1 {
+ font-size: 23px;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ text-align: center;
+ color: #7E1858;            
+}
+.bt {
+ color: white;
+ display: block;
+ position: relative;
+ margin-top: 10px;
+ padding-left: 8px;   
+}
+#wriHP {
+	color: aqua;
+	display: inline;
+	position: absolute;
+	margin-left: 35px;
+	margin-top: 30px;
+}
+#wriDef {
+	color: #cdcdcd;
+	display: inline;
+	position: absolute;
+	top: 55px;
+	left: 150px;
+}
+#wriLVL {
+	color: white;
+	display: block;
+	position: absolute;
+	top: 35px;
+	left: 40px;
+}
+/* Base dos HP nome icon*/
+#BaseNameHPMP {
+	 border: 1px solid black;
+	 background-color: #2D2D2D;
+	 height: 100px;
+	 width: 345px;
+	 display: block;
+	 position: relative;
+	 margin-left: 6px;
+	 padding: 1px;
+	 border-bottom-right-radius: 50px;
+	 border-bottom-left-radius: 20px;
+}
+.tremor {
+      position: relative;
+      animation: shake 0.35s;
+    }
+    
+    @keyframes shake {
+      0% { left: 0; }
+      25% { left: -10px; }
+      50% { left: 10px; }
+      75% { left: -10px; }
+      100% { left: 0; }
+    }
+   
+span#hp {    
+    color: white;
+    position: absolute;
+    top: 3px;
+    left: 120px;
+    font-size: 15px;
+    width: auto;
+    height: 16px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 20%;
+}          
+/* Barras */          
+.redbgbar { /* Barra Vermelha De Fundo */
+    --redbgbar: 100; 
+    height: 25px;
+    width: 256px;
+    padding: 0px;
+    background-color: rgba(0,0,0,1);
+    margin-top: 0px;
+    margin-left: 1px;
+    border-radius: 5%;
+    border: 2px solid #778569;
+    display: flex;
+    position: absolute;
+    left: 40px;
+    top: 0px;
+}
+.redbgbar::before {
+    content: '';
+    width: calc(var(--redbgbar) * 1%);
+    background-color: red; 
+    transition: all 0.8s ease;
+}
+.rainbowmainbar { /* Barra Principal arco-íris */
+   --rainbowbar: 100;
+   height: 25px;
+   width: 256px;
+   padding: 0px;
+   background-color: rgba(0,0,0,.2);
+   margin-top: 0px;
+   margin-left: 1px;
+   border-radius: 5%;
+   border: 2px solid #778569;
+   display: flex;
+   position: absolute;
+   left: 40px;
+   top: 0px;
+}
+.rainbowmainbar::before {
+	content: '';
+	width: calc(var(--rainbowbar) * 1%);
+	background-color: hsla(calc(var(--rainbowbar)* 2.4), 80%, 45%, 100%);
+	transition: all 0.2s ease;
+}
+#bossicon {
+ width: 44px;
+ height: 44px;
+ display: inline;
+ position: absolute;
+ left: -3px;
+ top: -5px;
+ border-radius: 100%;
+}
+/*  Nome */
+#EnemyNameBase {
+	background-color: #2d2d2d;
+	height: 40px;
+	width: 95px;
+	position: relative;
+	top: 70px;
+	border: 2px solid black;
+	border-bottom-left-radius: 25%;
+	border-bottom-right-radius: 25%;
+}
+#EnemyName {
+   height: auto;
+   width: auto;
+   text-shadow: 1px 1px 1px #ffffff;
+   display: block;
+   position: absolute;
+   left: 10px;
+   top: 10px;
+   font-size: 16px;
+   color: white;
+}
+#cardMessage {
+    width: 140px;
+    display: block;
+    position: absolute;
+    left: 150px;
+    top: 35px;
+    margin: 0px;
+    padding-left: 5px;
+    border-left: 2px solid red;
+    color: red;
+}
+button {
+   position: relative;
+   background-color: rgba(107, 107, 107, 1);
+   color: pink;
+/*   top: 100px; */
+}
+
+img { 
+	background-color: rgba(255, 70, 90, 0.1);
+} 
+
+#PlayerLVL {
+	margin-left: 10px;
+    left: 100px;
+	padding: 10px;
+	border-left: 2px solid red;
+	color: blue;
+	background-color: #100025;
+	}
+.JogadorHPbar {
+	height: 16px;
+	width: 256px;
+	background-color: rgb(255,0,0);
+}
+
+</style>
+</head>
+<body>
+	<span id="obsolete">Obsolete</span>
+	
+ <h1>Barra de Pontos de Vida</h1>
+ <div id='BaseNameHPMP'><p id="wriLVL"></p>
+ <span class='redbgbar'></span>
+ <span class='rainbowmainbar'><span id='hp'>100%</span></span>
+ <span id='bossicon'><img src='./PS-LoM_Mantis-Ant.png' alt='Boss ícone'></span>
+ <div class='ruamp'></div><span id="wriHP">{}</span> <span id="wriDef">{}</span><p id="cardMessage"></p>
+ <div id="EnemyNameBase"><p><span id='EnemyName'>/</span></p><p id="wriLVL"></p></div>
+	  </div><br>
+       
+<p class="bt">Clicar em "<button  id="DanoBasic" onclick="dano()">Dano</button>" para ferir.<br><br></p>
+<p class="bt">Clicar em "<button id="DanoHabilidade" onclick="DanoExtremo()">Habilidade Especial</button>"<br></p>
+<p>Clicar em "<button onclick="recuperar()">Recuperar</button>" para recuperar.</p>
+
+ <p id="PlayerLVL">.</p>
+
+<script>
+// Nome do Boss    	
+const userName = "Mantis Ant";
+// barras de HP e efeitos.
+const rainbowbar = document.querySelector('.rainbowmainbar');
+const redbar =  document.querySelector('.redbgbar');
+const wriLVL = document.querySelector('#wriLVL');
+
+
+// propriedades do inimigo:
+var Enemylvl = 50
+var HPbase = 100 + (Enemylvl-1)* 47;
+let HPnow = HPbase;
+var defbase = Math.floor(5+(Enemylvl-1)* 3.15);
+var defNow = defbase ;
+
+// os textos.
+document.getElementById("EnemyName").innerHTML = `${userName}`;
+document.getElementById("wriLVL").innerHTML = `Level: ${Enemylvl}`;
+document.getElementById("wriHP").innerHTML = `HP: ${HPnow} | ${HPbase}`;
+document.getElementById("wriDef").innerHTML = `DEF: ${defNow} | ${defbase}`;
+
+//				 	( width * atualHP ) / HP inicial 
+let barWidth = (100 * HPnow ) / HPbase;
+
+// propriedades do Jogador:
+var PlayerLVL = 1;
+var forca = 5+(PlayerLVL);
+var AtkArma = 12 + (PlayerLVL-1) * 12;
+let MaeMax = 200;
+let MaestriaLvL = 1+(MaeMax-1)*0.025
+
+// atk
+var AtkBase = forca*(5/8);
+// atkbruto sem CRITICO 
+var ATKbruto = (AtkBase + (AtkArma*MaestriaLvL)) * (0.51)
+
+// Multiplicador de Defesa 
+var DefFator = 100/(100+defNow)
+
+// dano Final 
+var DanoFinal = Math.floor(ATKbruto * DefFator);
+console.log("Dano Final",DanoFinal);
+
+// função Dano Básico (Jogador)
+var cooldownTime = 1000 * 1.5; // Tempo em milissegundos (1.5 segundos)
+var countdownInterval;
+
+    function habilitarBotao() {
+      var botao = document.getElementById("DanoBasic");
+      botao.disabled = false;
+      botao.textContent = "ATQ Básico";
+      clearInterval(countdownInterval);
+    }
+    
+function dano(){
+      var botao = document.getElementById("DanoBasic");
+      botao.disabled = true;
+
+      var startTime = Date.now();
+      var endTime = startTime + cooldownTime;
+
+      countdownInterval = setInterval(function() {
+        var remainingTime = endTime - Date.now();
+
+        if (remainingTime <= 0) {
+          habilitarBotao();
+        } else {
+          var seconds = (remainingTime/1000).toFixed(2);
+          botao.textContent = `ATQ Básico - Cooldown ${seconds}s`;
+        }
+      }, 100);
+	
+	// tremer 
+	var div = document.getElementById("BaseNameHPMP");
+	div.classList.add("tremor");
+	setTimeout(function() {
+	div.classList.remove("tremor");
+	}, 500); // Tempo em milissegundos 
+
+// Reduz o HP atual do inimigo pelo dano causado.
+        HPnow -= DanoFinal;
+// aqui é pra atualizar a Barra de HP, existe alguma ideia melhor?    
+var barWidthF = (100 * HPnow ) / HPbase;
+var barWidth = barWidthF.toFixed(3);
+
+rainbowbar.style.setProperty('--rainbowbar', barWidth);
+redbar.style.setProperty('--redbgbar', barWidth);
+
+document.getElementById('hp').innerHTML = `${barWidth}%`;
+document.getElementById("wriHP").innerHTML = `HP: ${HPnow} | ${HPbase}`;
+
+   
+// Inimigo foi derrotado.
+if (barWidth <= 0){     
+        console.log(`${userName} foi derrotado, clicar em RECUPERAR para restaurar a vida dele`);
+        
+        hp.style.setProperty('color', '#FF000A');
+        hp.style.setProperty('text-shadow','1px 1px 2px #FF0000');
+        document.getElementById('cardMessage').innerHTML = `${userName} morreu.`;
+        document.getElementById('hp').innerHTML = `0%`;
+        document.getElementById("wriHP").innerHTML = `HP: 0 | ${HPbase}`;
+        
+      } else {
+         hp.style.setProperty('color', '#FFFFFF');
+         hp.style.setProperty('text-shadow','0px 0px 0px #FFFFFF');        
+         document.getElementById('cardMessage').innerHTML = "";
+      }
+
+}
+
+
+function DanoExtremo(){
+	DanoForte = Math.round(AtkBase*2);
+	HPnow -= DanoForte;
+	
+	var barWidthF = (100 * HPnow ) / HPbase;
+    var barWidth = barWidthF.toFixed(3);
+
+     rainbowbar.style.setProperty('--rainbowbar', barWidth);
+     redbar.style.setProperty('--redbgbar', barWidth);
+
+    document.getElementById('hp').innerHTML = `${barWidth}%`;
+    document.getElementById("wriHP").innerHTML = `HP: ${HPnow} | ${HPbase}`;
+}
+
+// Função para Recuperar o HP total!
+function recuperar(){
+	// tamanho da Barra de HP
+	barWidth = Number(parseInt(100));
+	HPnow = HPbase;
+
+	rainbowbar.style.setProperty('--rainbowbar', barWidth);
+	redbar.style.setProperty('--redbgbar', barWidth);
+	
+	hp.style.setProperty('color', '#FFFFFF');
+    hp.style.setProperty('text-shadow','0px 0px 0px #FFFFFF');
+    
+    document.getElementById('cardMessage').innerHTML = "";
+    document.getElementById("wriHP").innerHTML = `HP: ${HPnow} | ${HPbase}`;
+    document.getElementById('hp').innerHTML = `${barWidth}%`;
+	console.log("O HP total base, foi Restaurado!");
+} 
+
+
+// Cor de Perigo, Diferença de level:
+let difference = (Enemylvl / PlayerLVL)**0.5 /10
+let NiveldePerigo = ((Enemylvl-10)/PlayerLVL);
+console.log("Novo:",NiveldePerigo);
+console.log(difference,"difference");
+
+if(difference <= 0.014){
+	console.log("Muito fácil.");
+	wriLVL.style.setProperty('color', '#00FF1F');
+	}
+
+if(difference <= 0.31 && difference > 0.015){
+    console.log("Comum Branco", difference);
+  wriLVL.style.setProperty('color', '#FFFFFF');
+    
+}
+// depois de 10 de diferença j=1, i=10^
+if(difference <= 0.49 && difference >= 0.32){
+    console.log("Incomum Laranja", difference);
+   wriLVL.style.setProperty('color', '#FF8E00');
+}
+//depois de 25 de diferença j=1, i=25^
+if(difference <= 0.99 && difference >= 0.5){
+    console.log("Raro Vermelho", difference);
+   wriLVL.style.setProperty('color', '#FF0000');
+}
+// depois de 100 de diferença j=1, i=100^
+if(difference >= 1){
+    console.log("Lendário Violeta", difference);
+    wriLVL.style.setProperty('color', '#C000FF');
+ }
+ 
+document.getElementById("PlayerLVL").innerHTML = `<b>Jogador<b><br>Level: ${PlayerLVL}<br>Força: ${forca}<br>Dano da arma: %% <br>Maestria: ${MaestriaLvL*100}%<br>DanoFinal ${DanoFinal}`;
+
+    </script>
+   </body>
+   </html>
