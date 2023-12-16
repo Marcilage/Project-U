@@ -254,10 +254,10 @@ let MaestriaLvL = 1+(MaeMax-1)*0.025
 // atk
 var AtkBase = forca*(5/8);
 // atkbruto sem CRITICO 
-var ATKbruto = (AtkBase + (AtkArma*MaestriaLvL)) * (0.51)
+var ATKbruto = (AtkBase + (AtkArma * MaestriaLvL)) * (0.51)
 
 // Multiplicador de Defesa 
-var DefFator = 100/(100+defNow)
+var DefFator = 100/(100+defNow) ;
 
 // dano Final 
 var DanoFinal = Math.floor(ATKbruto * DefFator);
@@ -365,6 +365,8 @@ function recuperar(){
 
 
 // Cor de Perigo, Diferença de level:
+
+// diferença de nível do jogador e do inimigo próximo, ou alvo.
 let difference = (Enemylvl / PlayerLVL)**0.5 /10
 let NiveldePerigo = ((Enemylvl-10)/PlayerLVL);
 console.log("Novo:",NiveldePerigo);
